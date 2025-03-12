@@ -1,7 +1,8 @@
 INC=/usr/include
 NAME=bin
 CFILES= main.c \
-		render.c
+		render.c \
+		algorythm.c
 CC=gcc
 OFILES=$(CFILES:.c=.o)
 

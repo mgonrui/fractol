@@ -10,8 +10,8 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
-#define WINDOW_WIDTH 400
-#define WINDOW_HEIGHT 400
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 800
 #define INPUT_ERROR "please enter a correct input:\n \"./fractol mandelbroot\" or\n \"./fractol julia <value_1> <value_2>\n\""
 
 typedef	unsigned char	byte;
@@ -33,10 +33,10 @@ typedef struct s_mlx{
 
 
 typedef struct s_complex_number {
-	double real;
-	double imaginary;
+	float real;
+	float imaginary;
 } t_complex_number;
 
 void render_img(t_mlx *mlx);
-
+int	inside_set(t_complex_number c);
 #endif // FRACT-OL_H
