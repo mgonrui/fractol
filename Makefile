@@ -2,7 +2,9 @@ INC=/usr/include
 NAME=bin
 CFILES= main.c \
 		render.c \
-		algorythm.c
+		algorythm.c \
+		events.c \
+		handle_inputs.c
 CC=gcc
 OFILES=$(CFILES:.c=.o)
 

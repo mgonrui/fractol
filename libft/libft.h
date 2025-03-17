@@ -79,7 +79,7 @@ char		*get_next_line(int fd);
 int			ft_is_in_str(const char *s, int c);
 
 int			ft_printf(char const *str, ...);
-void		ft_putstr(char *str, int *p_w);
+void		ft_putstr(char *str);
 void		ft_putchar(char c, int *printed_words);
 void		ft_printf_putnbr_dec(long int nb, int *p_w);
 void		ft_printf_putnbr_hexa(unsigned long long nb, char c, int *p_w);

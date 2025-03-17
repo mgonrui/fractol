@@ -14,38 +14,40 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void fill_img(t_mlx *mlx, int color)
+double scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
+{
+    return (new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min;
+}
+
+
+void fill_img(t_mlx *mlx)
 {
 	int x;
 	int y;
-	int x_zero;
-	int y_zero;
+	int iterations;
 	t_complex_number axis;
-	x_zero = WINDOW_WIDTH / 2;
-	y_zero = WINDOW_HEIGHT / 2;
-	axis.imaginary = 0 - y_zero;
-
 
 	y = 0;
 	while (y < WINDOW_HEIGHT)
 	{
 		x = 0;
-		axis.real = 0 - x_zero;
+		axis.imaginary = scale(y, mlx->y.min, mlx->y.max, 0, WINDOW_HEIGHT * mlx->zoom -1);
 		while (x < WINDOW_WIDTH)
 		{
-
-			if (inside_set(axis))
-				my_mlx_pixel_put(&mlx->img, x_zero + axis.real, y_zero + axis.imaginary, encode_rgb(0, 0, 255));
+			axis.real = scale(x, mlx->x.min, mlx->x.max, 0, WINDOW_WIDTH * mlx->zoom -1);
+			iterations = inside_set(axis);
+			if (iterations > 1  && iterations <= MAX_ITERATIONS)
+				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(scale(iterations, 0, 255, 1, 50), 0, 0));
+			else
+				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(0, 0, 0));
 			x++;
-			axis.real++;
 		}
 		y++;
-		axis.imaginary++;
 	}
 }
 
 void render_img(t_mlx *mlx)
 {
-	fill_img(mlx, encode_rgb(255, 0, 0));
+	fill_img(mlx);
 	mlx_put_image_to_window(mlx->connection, mlx->window, mlx->img.ptr, 0, 0);
 }
