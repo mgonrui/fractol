@@ -36,8 +36,12 @@ void fill_img(t_mlx *mlx)
 		{
 			axis.real = scale(x, mlx->x.min, mlx->x.max, 0, WINDOW_WIDTH * mlx->zoom -1);
 			iterations = inside_set(axis);
-			if (iterations > 1  && iterations <= MAX_ITERATIONS)
+			if (iterations > 1  && iterations <= 20)
 				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(scale(iterations, 0, 255, 1, 50), 0, 0));
+			else if (iterations > 20  && iterations <= 50)
+				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(0, 0, scale(iterations, 0, 255, 1, 50)));
+			else if (iterations > 50  && iterations <= MAX_ITERATIONS)
+				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(0, scale(iterations, 0, 255, 1, 50), 0));
 			else
 				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(0, 0, 0));
 			x++;

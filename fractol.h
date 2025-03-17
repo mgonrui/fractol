@@ -1,6 +1,3 @@
-
-
-
 #ifndef FRACTOL_H
 #define FRACTOL_H
 
@@ -18,7 +15,10 @@
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 800
 #define INPUT_ERROR "please enter a correct input:\n \"./fractol mandelbroot\" or\n \"./fractol julia <value_1> <value_2>\"\n"
+
+#ifndef MAX_ITERATIONS
 #define MAX_ITERATIONS 100
+#endif // MAX_ITERATIONS
 
 typedef	unsigned char	byte;
 

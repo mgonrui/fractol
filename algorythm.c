@@ -1,6 +1,4 @@
 #include "fractol.h"
-#include "libft/libft.h"
-#include <stdio.h>
 
 int	inside_set(t_complex_number c)
 {
