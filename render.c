@@ -31,10 +31,10 @@ void fill_img(t_mlx *mlx)
 	while (y < WINDOW_HEIGHT)
 	{
 		x = 0;
-		axis.imaginary = scale(y, mlx->y.min, mlx->y.max, 0, WINDOW_HEIGHT * mlx->zoom -1);
+		axis.imaginary = scale(y, mlx->y.min, mlx->y.max, 0, WINDOW_HEIGHT) / mlx->zoom;
 		while (x < WINDOW_WIDTH)
 		{
-			axis.real = scale(x, mlx->x.min, mlx->x.max, 0, WINDOW_WIDTH * mlx->zoom -1);
+			axis.real = scale(x, mlx->x.min, mlx->x.max, 0, WINDOW_WIDTH) / mlx->zoom;
 			iterations = inside_set(axis);
 			if (iterations > 1  && iterations <= 20)
 				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(scale(iterations, 0, 255, 1, 50), 0, 0));
