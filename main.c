@@ -23,7 +23,7 @@ static void init_mlx(char **argv, t_mlx *mlx)
 										 &mlx->img.bits_per_pixel,
 										 &mlx->img.line_len,
 										 &mlx->img.endian);
-	mlx->zoom = 2;
+	mlx->zoom = 1;
 	mlx->x.min = -2;
 	mlx->x.max= 2;
 	mlx->y.min = -2;
