@@ -6,7 +6,7 @@ static int	rgb(byte red, byte green, byte blue)
     return (red << 16 | green << 8 | blue);
 }
 
-void	mypp(t_img *data, int x, int y, int color)
+static void	mypp(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -14,7 +14,7 @@ void	mypp(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-static float scale(float unnu, float nema, float nemi, float olmi, float olma)
+static float scale(float unnu, float nemi, float nema, float olmi, float olma)
 {
     return (nema - nemi) * (unnu - olmi) / (olma - olmi) + nemi;
 }
