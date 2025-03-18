@@ -14,28 +14,27 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-double scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
+static double scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
 {
     return (new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min;
 }
 
 
-void fill_img(t_mlx *mlx)
+static void fill_img(t_mlx *mlx)
 {
 	int x;
 	int y;
 	int iterations;
-	t_complex_number axis;
 
 	y = 0;
 	while (y < WINDOW_HEIGHT)
 	{
 		x = 0;
-		axis.imaginary = scale(y, mlx->y.min, mlx->y.max, 0, WINDOW_HEIGHT) / mlx->zoom;
+		mlx->c.imaginary = (scale(y, -2, + 2, 0, WINDOW_HEIGHT) / mlx->zoom) + mlx->shift_y;
 		while (x < WINDOW_WIDTH)
 		{
-			axis.real = scale(x, mlx->x.min, mlx->x.max, 0, WINDOW_WIDTH) / mlx->zoom;
-			iterations = inside_set(axis);
+			mlx->c.real = (scale(x, -2, + 2, 0, WINDOW_WIDTH) / mlx->zoom) + mlx->shift_x;
+			iterations = inside_set(mlx);
 			if (iterations > 1  && iterations <= 20)
 				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(scale(iterations, 0, 255, 1, 50), 0, 0));
 			else if (iterations > 20  && iterations <= 50)

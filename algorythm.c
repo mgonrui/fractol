@@ -1,21 +1,20 @@
 #include "fractol.h"
 
-int	inside_set(t_complex_number c)
+int	inside_set(t_mlx *mlx)
 {
 	float temp;
-	t_complex_number z;
 
-	z.real = 0;
-	z.imaginary = 0;
+	mlx->z.real = 0;
+	mlx->z.imaginary = 0;
 	int iterations = 0;
 	while (iterations <= MAX_ITERATIONS)
 	{
-		temp = (z.real * z.real) - (z.imaginary * z.imaginary);
-		z.imaginary = 2 * z.imaginary * z.real;
-		z.real = temp;
-		z.real += c.real;
-		z.imaginary += c.imaginary;
-		if (((z.imaginary *  z.imaginary) + (z.real * z.real)) > 4)
+		temp = (mlx->z.real * mlx->z.real) - (mlx->z.imaginary * mlx->z.imaginary);
+		mlx->z.imaginary = 2 * mlx->z.imaginary * mlx->z.real;
+		mlx->z.real = temp;
+		mlx->z.real += mlx->c.real;
+		mlx->z.imaginary += mlx->c.imaginary;
+		if (((mlx->z.imaginary *  mlx->z.imaginary) + (mlx->z.real * mlx->z.real)) > 4)
 			return iterations ;
 		iterations++;
 	}

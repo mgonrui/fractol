@@ -22,6 +22,11 @@
 
 typedef	unsigned char	byte;
 
+typedef struct s_complex_number {
+	float real;
+	float imaginary;
+} t_complex_number;
+
 typedef struct s_img{
 	void *ptr;
 	char *addr;
@@ -30,29 +35,23 @@ typedef struct s_img{
 	int endian;
 } t_img;
 
-typedef struct s_complex_number {
-	float real;
-	float imaginary;
-} t_complex_number;
-
-typedef struct s_scale {
-	float max;
-	float min;
-} t_scale;
-
-
 typedef struct s_mlx{
+	// MLX
 	char *name;
 	void *connection;
 	void *window;
 	t_img img;
+	// FRACTAL
 	float zoom;
-	t_scale x;
-	t_scale y;
+	float shift_x;
+	float shift_y;
+	t_complex_number c;
+	t_complex_number z;
+
 } t_mlx;
 
 
-int	inside_set(t_complex_number c);
+int	inside_set(t_mlx *mlx);
 int close_my_program(t_mlx *mlx);
 int key_events(int keysym, t_mlx *mlx);
 void listen_input(t_mlx *mlx);
@@ -61,5 +60,5 @@ void move_img_left(t_mlx *mlx);
 void move_img_right(t_mlx *mlx);
 void move_img_down(t_mlx *mlx);
 void move_img_up(t_mlx *mlx);
-int mouse_events(int button, int x, int y,t_mlx *mlx);
+int mouse_events(int button, int x, int y, t_mlx *mlx);
 #endif // FRACT-OL_H

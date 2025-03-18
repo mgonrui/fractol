@@ -1,10 +1,4 @@
 #include "fractol.h"
-#include "libft/libft.h"
-#include "mlx_linux/mlx.h"
-#include <X11/X.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
 
 static void init_mlx(char **argv, t_mlx *mlx)
 {
@@ -23,13 +17,18 @@ static void init_mlx(char **argv, t_mlx *mlx)
 										 &mlx->img.bits_per_pixel,
 										 &mlx->img.line_len,
 										 &mlx->img.endian);
-	mlx->zoom = 1;
-	mlx->x.min = -2;
-	mlx->x.max= 2;
-	mlx->y.min = -2;
-	mlx->y.max= 2;
 }
 
+static void init_fractal(t_mlx *mlx)
+{
+	mlx->zoom = 1;
+	mlx->shift_x = 0;
+	mlx->shift_y = 0;
+	mlx->c.real = 0;
+	mlx->c.imaginary = 0;
+	mlx->z.real = 0;
+	mlx->z.imaginary = 0;
+}
 static void check_args(int argc, char **argv)
 {
 	if ((argc == 2 && !ft_strncmp("mandelbrot", argv[1], 11)) ||
@@ -45,6 +44,7 @@ int main(int argc, char **argv)
 	t_mlx mlx;
 	check_args(argc, argv);
 	init_mlx(argv, &mlx);
+	init_fractal(&mlx);
 	render_img(&mlx);
 	listen_input(&mlx);
 	mlx_loop(mlx.connection);

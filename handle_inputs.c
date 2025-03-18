@@ -1,4 +1,5 @@
 #include "fractol.h"
+#include <stdio.h>
 
 void listen_input(t_mlx *mlx)
 {
@@ -24,11 +25,13 @@ int key_events(int keysym, t_mlx *mlx)
 }
 
 
-int mouse_events(int button, int x, int y,t_mlx *mlx)
+int mouse_events(int button, int x, int y, t_mlx *mlx)
 {
 	x = x + y;
+	// scroll up
 	if (button == Button4)
 		mlx->zoom *= 1.05;
+	// scroll down
 	else if (button == Button5)
 		mlx->zoom *= 0.95;
 	render_img(mlx);
