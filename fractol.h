@@ -12,19 +12,19 @@
 #include <stdio.h>
 #include <string.h>
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 800
+#define WID 800
+#define HEI 800
 #define INPUT_ERROR "please enter a correct input:\n \"./fractol mandelbroot\" or\n \"./fractol julia <value_1> <value_2>\"\n"
 
-#ifndef MAX_ITERATIONS
-#define MAX_ITERATIONS 100
+#ifndef MAX_ITER
+#define MAX_ITER 100
 #endif // MAX_ITERATIONS
 
 typedef	unsigned char	byte;
 
 typedef struct s_complex_number {
 	float real;
-	float imaginary;
+	float imag;
 } t_complex_number;
 
 typedef struct s_img{
@@ -43,8 +43,8 @@ typedef struct s_mlx{
 	t_img img;
 	// FRACTAL
 	float zoom;
-	float shift_x;
-	float shift_y;
+	float shft_x;
+	float shft_y;
 	t_complex_number c;
 	t_complex_number z;
 

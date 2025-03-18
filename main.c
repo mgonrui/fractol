@@ -7,12 +7,12 @@ static void init_mlx(char **argv, t_mlx *mlx)
 		perror("error trying to establish mlx connection"), exit(1);
 	mlx->name = argv[1];
 	mlx->window = mlx_new_window(mlx->connection,
-								WINDOW_WIDTH,
-								WINDOW_HEIGHT,
+								WID,
+								HEI,
 								mlx->name);
 	mlx->img.ptr= mlx_new_image(mlx->connection,
-							   WINDOW_WIDTH,
-							   WINDOW_HEIGHT);
+							   WID,
+							   HEI);
 	mlx->img.addr= mlx_get_data_addr(mlx->img.ptr,
 										 &mlx->img.bits_per_pixel,
 										 &mlx->img.line_len,
@@ -22,12 +22,12 @@ static void init_mlx(char **argv, t_mlx *mlx)
 static void init_fractal(t_mlx *mlx)
 {
 	mlx->zoom = 1;
-	mlx->shift_x = 0;
-	mlx->shift_y = 0;
+	mlx->shft_x = 0;
+	mlx->shft_y = 0;
 	mlx->c.real = 0;
-	mlx->c.imaginary = 0;
+	mlx->c.imag = 0;
 	mlx->z.real = 0;
-	mlx->z.imaginary = 0;
+	mlx->z.imag = 0;
 }
 static void check_args(int argc, char **argv)
 {

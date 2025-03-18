@@ -11,40 +11,40 @@ int close_my_program(t_mlx *mlx)
 
 void move_img_left(t_mlx *mlx)
 {
-	float shift = 0.5;
+	float shft = 0.5;
 	if (mlx->zoom > 1)
-		mlx->shift_x -= shift / mlx->zoom;
+		mlx->shft_x -= shft / mlx->zoom;
 	else
-		mlx->shift_x -= shift;
+		mlx->shft_x -= shft;
 	render_img(mlx);
 }
 
 void move_img_right(t_mlx *mlx)
 {
-	float shift = 0.5;
+	float shft = 0.5;
 	if (mlx->zoom > 1)
-		mlx->shift_x += shift / mlx->zoom;
+		mlx->shft_x += shft / mlx->zoom;
 	else
-		mlx->shift_x += shift;
+		mlx->shft_x += shft;
 	render_img(mlx);
 }
 
 void move_img_up(t_mlx *mlx)
 {
-	float shift = 0.5;
+	float shft = 0.5;
 	if (mlx->zoom > 1)
-		mlx->shift_y -= shift / mlx->zoom;
+		mlx->shft_y -= shft / mlx->zoom;
 	else
-		mlx->shift_y -= shift;
+		mlx->shft_y -= shft;
 	render_img(mlx);
 }
 
 void move_img_down(t_mlx *mlx)
 {
-	float shift = 0.5;
+	float shft = 0.5;
 	if (mlx->zoom > 1)
-		mlx->shift_y += shift / mlx->zoom;
+		mlx->shft_y += shft / mlx->zoom;
 	else
-		mlx->shift_y += shift;
+		mlx->shft_y += shft;
 	render_img(mlx);
 }

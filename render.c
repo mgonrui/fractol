@@ -1,12 +1,12 @@
 #include "fractol.h"
 #include <stdio.h>
 
-static int	encode_rgb(byte red, byte green, byte blue)
+static int	rgb(byte red, byte green, byte blue)
 {
     return (red << 16 | green << 8 | blue);
 }
 
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
+void	mypp(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -14,9 +14,9 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-static double scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
+static float scale(float unnu, float nema, float nemi, float olmi, float olma)
 {
-    return (new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min;
+    return (nema - nemi) * (unnu - olmi) / (olma - olmi) + nemi;
 }
 
 
@@ -24,25 +24,25 @@ static void fill_img(t_mlx *mlx)
 {
 	int x;
 	int y;
-	int iterations;
+	int iter;
 
 	y = 0;
-	while (y < WINDOW_HEIGHT)
+	while (y < HEI)
 	{
 		x = 0;
-		mlx->c.imaginary = (scale(y, -2, + 2, 0, WINDOW_HEIGHT) / mlx->zoom) + mlx->shift_y;
-		while (x < WINDOW_WIDTH)
+		mlx->c.imag = (scale(y, -2, + 2, 0, HEI) / mlx->zoom) + mlx->shft_y;
+		while (x < WID)
 		{
-			mlx->c.real = (scale(x, -2, + 2, 0, WINDOW_WIDTH) / mlx->zoom) + mlx->shift_x;
-			iterations = inside_set(mlx);
-			if (iterations > 1  && iterations <= 20)
-				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(scale(iterations, 0, 255, 1, 50), 0, 0));
-			else if (iterations > 20  && iterations <= 50)
-				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(0, 0, scale(iterations, 0, 255, 1, 50)));
-			else if (iterations > 50  && iterations <= MAX_ITERATIONS)
-				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(0, scale(iterations, 0, 255, 1, 50), 0));
+			mlx->c.real = (scale(x, -2, + 2, 0, WID) / mlx->zoom) + mlx->shft_x;
+			iter = inside_set(mlx);
+			if (iter > 1  && iter <= 20)
+				mypp(&mlx->img, x, y, rgb(scale(iter, 0, 255, 1, 50), 0, 0));
+			else if (iter > 20  && iter <= 50)
+				mypp(&mlx->img, x, y, rgb(0, 0, scale(iter, 0, 255, 1, 50)));
+			else if (iter > 50  && iter <= MAX_ITER)
+				mypp(&mlx->img, x, y, rgb(0, scale(iter, 0, 255, 1, 50), 0));
 			else
-				my_mlx_pixel_put(&mlx->img, x, y, encode_rgb(0, 0, 0));
+				mypp(&mlx->img, x, y, rgb(0, 0, 0));
 			x++;
 		}
 		y++;
