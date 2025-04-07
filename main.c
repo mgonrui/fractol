@@ -1,4 +1,5 @@
 #include "fractol.h"
+#include "libft/libft.h"
 
 static void init_mlx(char **argv, t_mlx *mlx)
 {
@@ -19,15 +20,43 @@ static void init_mlx(char **argv, t_mlx *mlx)
 										 &mlx->img.endian);
 }
 
-static void init_fractal(t_mlx *mlx)
+float ft_atof(char *str)
+{
+	int sign = 1;
+	float number = 0;
+	int i = 0;
+	float float_mult = 1;
+	while(str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (str[i] == '+')
+		i++;
+	if (str[i++] == '-')
+		sign = -1;
+	while(str[i] >= '0' && str[i] <= '9')
+	{
+		number *= 10;
+		number += str[i] - '0';
+		i++;
+	}
+	if (str[i] == '.')
+		i++;
+	while(str[i] >= '0' && str[i] <= '9')
+	{
+		float_mult /= 10;
+		number += (str[i++] - '0') * float_mult;
+	}
+	return number * sign;
+}
+static void init_fractal(t_mlx *mlx, char **argv)
 {
 	mlx->zoom = 1;
 	mlx->shft_x = 0;
 	mlx->shft_y = 0;
-	mlx->c.real = 0;
-	mlx->c.imag = 0;
-	mlx->z.real = 0;
-	mlx->z.imag = 0;
+	if (!ft_strncmp(mlx->name, "julia", 6))
+	{
+		mlx->c.real = ft_atof(argv[2]);
+		mlx->c.imag = ft_atof(argv[3]);
+	}
 }
 static void check_args(int argc, char **argv)
 {
@@ -44,7 +73,7 @@ int main(int argc, char **argv)
 	t_mlx mlx;
 	check_args(argc, argv);
 	init_mlx(argv, &mlx);
-	init_fractal(&mlx);
+	init_fractal(&mlx, argv);
 	render_img(&mlx);
 	listen_input(&mlx);
 	mlx_loop(mlx.connection);

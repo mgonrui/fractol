@@ -4,8 +4,6 @@ int	inside_set(t_mlx *mlx)
 {
 	float temp;
 
-	mlx->z.real = 0;
-	mlx->z.imag = 0;
 	int iterations = 0;
 	while (iterations <= MAX_ITER)
 	{
