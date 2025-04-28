@@ -1,4 +1,3 @@
-INC=/usr/include
 NAME=bin
 CFILES= main.c \
 		render.c \

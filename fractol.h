@@ -18,7 +18,7 @@
 
 #ifndef MAX_ITER
 #define MAX_ITER 100
-#endif // MAX_ITERATIONS
+#endif // MAX_ITER
 
 typedef	unsigned char	byte;
 
@@ -61,4 +61,4 @@ void move_img_right(t_mlx *mlx);
 void move_img_down(t_mlx *mlx);
 void move_img_up(t_mlx *mlx);
 int mouse_events(int button, int x, int y, t_mlx *mlx);
-#endif // FRACT-OL_H
+#endif // FRACTOL_H
