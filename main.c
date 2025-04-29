@@ -35,8 +35,7 @@ float ft_atof(char *str)
 	while(str[i] >= '0' && str[i] <= '9')
 	{
 		number *= 10;
-		number += str[i] - '0';
-		i++;
+		number += str[i++] - '0';
 	}
 	if (str[i] == '.')
 		i++;
@@ -60,9 +59,11 @@ static void init_fractal(t_mlx *mlx, char **argv)
 }
 static void check_args(int argc, char **argv)
 {
-	if ((argc == 2 && !ft_strncmp("mandelbrot", argv[1], 11)) ||
-		(argc == 4 && !ft_strncmp("julia", argv[1], 6)))
+	if (argc == 2 && !ft_strncmp("mandelbrot", argv[1], 11))
 		return;
+	if (argc == 4 && !ft_strncmp("julia", argv[1], 6)
+		&& valid_number(argv[2]) && valid_number(argv[3]))
+		return ;
 	else
 		ft_putstr(INPUT_ERROR), _exit(1);
 }

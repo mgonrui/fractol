@@ -11,6 +11,7 @@
 #include "libft/libft.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define WID 800
 #define HEI 800
@@ -61,4 +62,5 @@ void move_img_right(t_mlx *mlx);
 void move_img_down(t_mlx *mlx);
 void move_img_up(t_mlx *mlx);
 int mouse_events(int button, int x, int y, t_mlx *mlx);
+bool valid_number(char *str);
 #endif // FRACTOL_H

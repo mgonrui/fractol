@@ -23,8 +23,8 @@ static float scale(float unnu, float nemi, float nema, float olmi, float olma)
 static void fill_img(int y, int x, t_mlx *mlx)
 {
 	int iter;
-	mlx->z.imag = (scale(y, -2, + 2, 0, HEI) / mlx->zoom) + mlx->shft_y;
 	mlx->z.real = (scale(x, -2, + 2, 0, WID) / mlx->zoom) + mlx->shft_x;
+	mlx->z.imag = (scale(y, -2, + 2, 0, HEI) / mlx->zoom) + mlx->shft_y;
 
 	if (!ft_strncmp(mlx->name, "mandelbrot", 11))
 	{
