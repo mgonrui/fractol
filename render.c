@@ -32,7 +32,7 @@ static void fill_img(int y, int x, t_mlx *mlx)
 		mlx->c.imag = mlx->z.imag;
 	}
 
-	iter = inside_set(mlx);
+	iter = inside_set(mlx->z, mlx->c);
 	if (iter > 1  && iter <= 20)
 		mypp(&mlx->img, x, y, rgb(scale(iter, 0, 255, 1, 50), 0, 0));
 	else if (iter > 20  && iter <= 50)
