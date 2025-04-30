@@ -2,9 +2,11 @@
 
 bool valid_number2(char *str)
 {
-    int i =0;
-    bool dot = false;
+    int i;
+    bool dot;
 
+    dot = false;
+    i = 0;
     while (str[i] != '\0')
     {
         if (str[i] == '.')
@@ -46,6 +48,7 @@ bool valid_number(char *str)
 char *jump_spaces(char *str)
 {
     int i;
+
     i = 0;
     while(str[i] == ' '  || str[i] == '\t')
         i++;
