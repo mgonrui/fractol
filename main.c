@@ -39,13 +39,14 @@ static void check_args(int argc, char **argv)
 		&& valid_number(argv[2]) && valid_number(argv[3]))
 		return ;
 	else
-		ft_putstr(INPUT_ERROR), _exit(1);
+		ft_putstr(INPUT_ERROR), exit(1);
 }
 
 
 int main(int argc, char **argv)
 {
 	t_mlx mlx;
+
 	check_args(argc, argv);
 	init_mlx(argv, &mlx);
 	init_fractal(&mlx, argv);

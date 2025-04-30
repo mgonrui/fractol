@@ -16,7 +16,7 @@ t_complex_number sqr_complex_number(t_complex_number n)
 	return sqr;
 }
 
-int	inside_set(t_complex_number z, t_complex_number c)
+int	check_point_inside_set(t_complex_number z, t_complex_number c)
 {
 	int iterations = 0;
 	while (iterations <= MAX_ITER)
