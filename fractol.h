@@ -53,6 +53,7 @@ typedef struct s_mlx{
 
 
 int	inside_set(t_complex_number z, t_complex_number c);
+float ft_atof(char *str);
 int close_my_program(t_mlx *mlx);
 int key_events(int keysym, t_mlx *mlx);
 void listen_input(t_mlx *mlx);
