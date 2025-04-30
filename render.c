@@ -14,24 +14,25 @@ static void	mypp(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-static float scale(float unnu, float nemi, float nema, float olmi, float olma)
+static float scale(float unscaled_num, float new_min, float new_max,
+				   float old_min, float old_max)
 {
-    return (nema - nemi) * (unnu - olmi) / (olma - olmi) + nemi;
+    return (new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min)
+		+ new_min;
 }
 
 
 static void fill_img(int y, int x, t_mlx *mlx)
 {
 	int iter;
+
 	mlx->z.real = (scale(x, -2, + 2, 0, WID) / mlx->zoom) + mlx->shft_x;
 	mlx->z.imag = (scale(y, -2, + 2, 0, HEI) / mlx->zoom) + mlx->shft_y;
-
 	if (!ft_strncmp(mlx->name, "mandelbrot", 11))
 	{
 		mlx->c.real = mlx->z.real;
 		mlx->c.imag = mlx->z.imag;
 	}
-
 	iter = inside_set(mlx->z, mlx->c);
 	if (iter > 1  && iter <= 20)
 		mypp(&mlx->img, x, y, rgb(scale(iter, 0, 255, 1, 50), 0, 0));
@@ -47,6 +48,7 @@ void render_img(t_mlx *mlx)
 {
 	int x;
 	int y;
+
 	y = 0;
 	while (y < HEI)
 	{

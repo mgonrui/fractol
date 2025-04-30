@@ -1,7 +1,7 @@
 NAME=bin
 CFILES= main.c \
 		render.c \
-		algorythm.c \
+		equation.c \
 		events.c \
 		utils.c \
 		handle_inputs.c
