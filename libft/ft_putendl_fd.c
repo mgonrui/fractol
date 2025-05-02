@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 15:23:06 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/17 18:16:18 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:07:29 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 13:29:25 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (fd < 0 || !s)
-		return ;
-	while (s[i])
+	while (*s)
 	{
-		write(fd, &s[i], 1);
-		i++;
+		ft_putchar_fd(*s, fd);
+		s++;
 	}
-	write(fd, "\n", 1);
+	ft_putchar_fd('\n', fd);
 }
+// int main(void)
+// {
+// 	ft_putendl_fd("hello world", 1);
+// }

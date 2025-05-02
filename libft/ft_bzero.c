@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 16:34:42 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:31:38 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/04/10 15:24:52 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:39:07 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,14 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	if (n != '0')
-	{
-		ft_memset(s, '\0', n);
-	}
+	ft_memset(s, 0, n);
 }
+// #include <stdio.h>
 
-/* #include <stdio.h>
-
-int	main(void)
-{
-	char	str[30] = "pipo es un buen perro";
-
-	ft_bzero(str, 4);
-	printf("%s", str);
-	printf("hello world");
-	return (0);
-} */
+// int main(void)
+// {
+// 	char string[] = "hello world";
+// 	printf("%s\n", string);
+// 	ft_bzero(string, 3);
+// 	printf("%s\n", string);
+// }

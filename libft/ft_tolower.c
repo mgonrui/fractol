@@ -3,34 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 16:17:54 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:30:28 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/04/22 15:36:36 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:25:21 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_tolower(int c)
+int	ft_tolower(int ch)
 {
-	if (ft_isalpha(c) == 1)
-		c += 32;
-	return (c);
+	if (ch >= 'A' && ch <= 'Z')
+		return (ch + ('a' - 'A'));
+	return (ch);
 }
+// #include <stdio.h>
 
-/* #include <stdio.h>
+// int main() {
+//     char c;
 
-int main(void)
-{
-	int i;
-	char str[] = "hola PIpO";
-	
-	i = 0;
-	while (str[i] != '\0')
-	{
-		str[i] = ft_tolower(str[i]);
-		i++;
-	}
-	printf("%s", str);
-} */
+//     c = 'm';
+//     printf("%c -> %c", c, ft_tolower(c));
+
+//     c = 'D';
+//     printf("\n%c -> %c", c, ft_tolower(c));
+
+//     c = '9';
+//     printf("\n%c -> %c", c, ft_tolower(c));
+//     return 0;
+// }

@@ -3,46 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 17:02:45 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:31:11 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/04/22 15:42:21 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:23:23 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *str, int c)
 {
-	unsigned char	aux;
-	int				i;
-	char			*tmp;
+	char	*p_str;
+	char	c_is_char;
 
-	aux = (char)c;
-	i = 0;
-	tmp = (char *)s;
-	while (tmp[i] != '\0')
+	p_str = (char *)str;
+	c_is_char = (char)c;
+	while (*p_str)
 	{
-		if (tmp[i] == aux)
-			return (&tmp[i]);
-		i++;
+		if (c_is_char == *p_str)
+		{
+			return (p_str);
+		}
+		p_str++;
 	}
-	if (aux == '\0' || c == 1024)
-	{
-		return (&tmp[i]);
-	}
+	if (c == 0 || c == 1024)
+		return (p_str);
 	else
 		return (NULL);
 }
+// #include <stdio.h>
 
-/* #include <stdio.h>
+// int	main(void)
+// {
+// 	char	str[] = "teste";
+// 	int		c = 'e';
 
-int	main(void)
-{
-	char	str[] = "pipo es un buen perro";
-	int		c = '\0';
-
-	printf("%s", ft_strchr(str, c));
-	if (ft_strchr(str, '\0') == NULL)
-		printf("No esta");
-} */
+// 	printf("%s\n", ft_strchr(str, c));
+// 	printf("%s\n", ft_strchr(str, '\0'));
+// }

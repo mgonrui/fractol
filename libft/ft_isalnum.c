@@ -3,30 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 12:48:21 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:31:33 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:04:00 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:21:53 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isalnum(int c)
+int	ft_isalnum(int argument)
 {
-	if ((c >= '0' && c <= '9')
-		|| (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+	if ((argument >= '0' && argument <= '9') || ((argument >= 'a'
+				&& argument <= 'z') || (argument >= 'A' && argument <= 'Z')))
 		return (1);
-	else
-		return (0);
+	return (0);
 }
-/* #include <ctype.h>
-#include <stdio.h>
+// #include <stdio.h>
+// #include <ctype.h>
+// int main()
+// {
+//     char c;
+//     int result;
 
-int	main(void)
-{
-	int x = ft_isalnum('4');
-	int y = isalnum('4');
-	printf("%d\n", x);
-	printf("%d", y);
-} */
+//     c = '5';
+//     result = isalnum(c);
+//     printf("When %c is passed, return value is %d\n", c, result);
+
+//     c = 'Q';
+//     result = isalnum(c);
+//     printf("When %c is passed, return value is %d\n", c, result);
+
+//     c = 'l';
+//     result = isalnum(c);
+//     printf("When %c is passed, return value is %d\n", c, result);
+
+//     c = '+';
+//     result = isalnum(c);
+//     printf("When %c is passed, return value is %d\n", c, result);
+
+//     return 0;
+// }

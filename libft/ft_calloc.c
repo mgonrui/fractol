@@ -3,48 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 13:40:23 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:31:36 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:03:10 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:56:57 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include <stdlib.h>
-
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t num, size_t size)
 {
-	char			*ptr;
-	int				i;
-	int				limit;
+	char	*p_calloc;
 
-	ptr = malloc(size * count);
-	if (ptr == NULL)
-		return (0);
-	i = 0;
-	limit = count * size;
-	while (i < limit)
-	{
-		ptr[i] = '\0';
-		i++;
-	}
-	return ((void *)ptr);
+	p_calloc = malloc(num * size);
+	if (!(p_calloc))
+		return (NULL);
+	ft_bzero(p_calloc, num * size);
+	return ((void *)p_calloc);
 }
-/* 
-#include <unistd.h>
 
-int	main(void)
-{
-	char *test = ft_calloc(5, sizeof(char));
-
-	int i = 0;
-	while (i <= 11)
-	{
-		if (test[i] == '\0')
-			write(1, "A", 1);
-		i++;
-	}
-	return (0);
-} */
+// #include <stdio.h>
+// #include <complex.h>
+// void count_nulls(int i, int num, char *prueba)
+// {
+// 	int null_count = 0;
+// 	while (i < sizeof(char) * num)
+// 	{
+// 		if (prueba[i] == '\0')
+// 			null_count++;
+// 		i++;
+// 	}
+// 	printf("null count: %d\n", null_count);
+// }
+// int main(void)
+// {
+// 	int num = 3;
+// 	int i = 0;
+// 	char *prueba = "hello world";
+// 	count_nulls(i, num, prueba);
+// 	prueba = ft_calloc(num, sizeof(char));
+// 	count_nulls(i, num, prueba);
+// 	return 0;
+// }

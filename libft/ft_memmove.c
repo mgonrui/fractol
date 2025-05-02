@@ -3,52 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:04:52 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:31:18 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:06:42 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:22:36 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t		i;
-	char		*tmp;
-	char		*aux;
+	char	*p_dst;
+	char	*p_src;
 
+	p_dst = (char *)dst;
+	p_src = (char *)src;
 	if (!dst && !src)
-		return (0);
-	tmp = (char *)dst;
-	aux = (char *)src;
-	if (src < dst)
+		return (NULL);
+	if (dst > src)
 	{
-		while (n-- > 0)
-		{
-			tmp[n] = aux[n];
-		}
+		while (len--)
+			p_dst[len] = p_src[len];
 	}
 	else
 	{
-		i = 0;
-		while (i < n)
-		{
-			tmp[i] = aux[i];
-			i++;
-		}
+		ft_memcpy(p_dst, p_src, len);
 	}
 	return (dst);
 }
-/* 
-#include<stdio.h>  
+// #include <string.h>
+// #include <stdio.h>
+// int main() {
+//     char str[50] = "123456";
 
-int	main(void)
-{
-	char dst[] = "Pipo es un buen perro";
-	char src[] = "Perro";
+//     // Copy the string to the middle of itself
+// 	// memmove(str, str + 1, 9);
+//     // memcpy(str + 7, str, 13);
+//     ft_memmove(str, str,4);
+//     // memmove(str, str,4);
 
-	ft_memmove(dst, src, 5);
-	printf("%s", dst);
-	return (0);
-} */
+//     printf("Modified string: %s\n", str);
+
+//     return 0;
+// }

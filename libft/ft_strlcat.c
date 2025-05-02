@@ -3,78 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 13:09:09 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:30:57 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:09:15 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 13:44:53 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
-	unsigned long int	srclen;
-	unsigned long int	dstlen;
-	unsigned long int	size;
-	unsigned long int	i;
+	size_t	dest_len;
+	size_t	j;
+	size_t	return_value;
 
-	srclen = ft_strlen(src);
-	dstlen = ft_strlen(dst);
-	size = dstsize;
-	i = 0;
-	if (dstsize <= dstlen)
-		srclen += dstsize;
+	dest_len = ft_strlen(dest);
+	return_value = ft_strlen(src);
+	if (size <= dest_len)
+		return_value += size;
 	else
-		srclen += dstlen;
-	while (src[i] != '\0' && dstlen + i + 1 < size)
+		return_value += dest_len;
+	j = 0;
+	while (src[j] != '\0' && dest_len + 1 < size)
 	{
-		dst[dstlen + i] = src[i];
-		i++;
+		dest[dest_len] = src[j];
+		dest_len++;
+		j++;
 	}
-	dst[dstlen + i] = '\0';
-	return (srclen);
+	dest[dest_len] = '\0';
+	return (return_value);
 }
+// #include <stdio.h>
 
-/* size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
-{
-	size_t	srclen;
-	size_t	dstlen;
-	size_t	i;
-
-	srclen = ft_strlen(src);
-	dstlen = ft_strlen(dst);
-	i = 0;
-	if (dstsize <= dstlen)
-		srclen += dstsize;
-	else
-		srclen += dstlen;
-	while (src[i] != '\0' && dstlen + i + 1 < dstsize)
-	{
-		dst[dstlen + i] = src[i];
-		i++;
-	}
-	dst[dstlen + i] = '\0';
-	return (srclen);
-} */
-
-/* #include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-    char dest[20] = "hola";
-    char src[] = "hola";
-	char dest2[20] = "hola";
-	char src2[] = "hola";
-    size_t size = 8;
-
-    printf("Before ft_strlcat: dest = \"%s\"\n", dest);
-    printf("Result of ft_strlcat: %zu\n", ft_strlcat(dest, src, size));
-    printf("After ft_strlcat: dest = \"%s\"\n", dest);
-	printf("Before strlcat: dest = \"%s\"\n", dest2);
-   	printf("%lu\n", strlcat(dest2, src2, size));
-    printf("After strlcat: dest = \"%s\"\n", dest2);
-
-    return (0);
-} */
+// int main(void)
+// {
+// 	char dest[20] = "1234";
+// 	char *src = "567890";
+// 	size_t size = 7;
+// 	printf("return value: %lu\n", ft_strlcat(dest, src, size));
+// 	printf("dest content: %s\n", dest);
+// 	return 0;
+// }

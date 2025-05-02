@@ -1,4 +1,0 @@
-• Tu programa debe ofrecer los conjuntos de Julia y Mandelbrot.
-
-• Debes poder crear un conjunto de Julia diferente mediante los parámetros del pro-
-grama.

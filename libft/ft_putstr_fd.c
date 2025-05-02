@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 15:07:05 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/17 18:16:35 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:07:50 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 13:33:14 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,14 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (fd < 0 || !s)
-		return ;
-	while (s[i])
+	while (*s)
 	{
-		write(fd, &s[i], 1);
-		i++;
+		ft_putchar_fd(*s, fd);
+		s++;
 	}
 }
-
-/* int	main(void)
-{
-	int	fd = open("pipo.txt", O_WRONLY);
-	ft_putstr_fd("pipo es un buen perro", fd);
-	return (0);
-}  */
+// int main(void)
+// {
+// 	ft_putstr_fd("hello world", 1);
+// 	return 0;
+// }

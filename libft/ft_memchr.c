@@ -3,39 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 10:36:26 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/25 14:30:22 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:05:02 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 13:20:23 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-	unsigned char		*tmp;
-	unsigned long int	i;
-	unsigned char		x;
+	unsigned char	*unsigned_char_str;
+	unsigned char	unsigned_char_c;
+	size_t			i;
 
-	tmp = (unsigned char *)s;
-	x = (unsigned char)c;
+	unsigned_char_str = (unsigned char *)str;
+	unsigned_char_c = (unsigned char)c;
 	i = 0;
 	while (i < n)
 	{
-		if (tmp[i] == x)
-			return (&tmp[i]);
+		if (unsigned_char_str[i] == unsigned_char_c)
+			return (&unsigned_char_str[i]);
 		i++;
 	}
 	return (NULL);
 }
-/* 
-#include <stdio.h>
 
-int	main(void)
-{
-	char	dst[] = "Pip es un buen perro";
+// #include <stdio.h>
 
-	printf("%s", ft_memchr(dst, 'o', 19));
-	return (0);
-} */
+// int main(void)
+// {
+// 	const char *string = "hello world";
+// 	const char character = 'o';
+// 	void *vp_string = ft_memchr(string, character, 7);	
+// 	printf("%s", (char *)vp_string);
+// 	return 0;
+// }

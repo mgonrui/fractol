@@ -3,37 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 11:07:46 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:31:22 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:05:54 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 13:27:26 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	size_t				i;
-	unsigned const char	*tmp1;
-	unsigned const char	*tmp2;
+	size_t			i;
+	unsigned char	*unsigned_char_str1;
+	unsigned char	*unsigned_char_str2;
 
-	tmp1 = (unsigned const char *)s1;
-	tmp2 = (unsigned const char *)s2;
+	unsigned_char_str1 = (unsigned char *)str1;
+	unsigned_char_str2 = (unsigned char *)str2;
 	i = 0;
-	if (n == 0)
-		return (0);
-	while ((i < n - 1) && (tmp1[i] == tmp2[i]))
+	while (i < n)
+	{
+		if (unsigned_char_str1[i] != unsigned_char_str2[i])
+		{
+			return (unsigned_char_str1[i] - unsigned_char_str2[i]);
+		}
 		i++;
-	return (tmp1[i] - tmp2[i]);
+	}
+	return (0);
 }
 
-/* #include <stdio.h>
-
-int	main(void)
-{
-	char	s1[] = "Pipoaaaun buen perro";
-	char	s2[] = "Pipoa  es un buen perro";
-
-	printf("%d", ft_memcmp(s1, s2, 0));
-} */
+// #include <stdio.h>
+// int main(void)
+// {
+// 	const char *string1 = "123456";	
+// 	const char *string2 = "12345";
+// 	const int n = 6;
+// 	printf("%d\n", ft_memcmp((const void *)string1, (const void *)string2, n));
+// 	return 0;
+// }

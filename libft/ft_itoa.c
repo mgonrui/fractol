@@ -3,60 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 11:04:19 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/16 12:32:56 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:04:50 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 14:46:59 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_nbr_counter(long int nb)
+static long int	ft_count_digits(long int n)
 {
-	int	count;
+	long int	ndigits;
 
-	count = 0;
-	if (nb < 0)
-		count++;
-	if (nb == 0)
+	ndigits = 0;
+	if (n == 0)
 		return (1);
-	while (nb != 0)
+	if (n < 0)
 	{
-		nb /= 10;
-		count++;
+		ndigits++;
+		n = -n;
 	}
-	return (count);
+	while (n > 0)
+	{
+		n /= 10;
+		ndigits++;
+	}
+	return (ndigits);
 }
 
 char	*ft_itoa(int n)
 {
-	int			nbr_count;
-	char		*str;
-	long int	n_copy;
+	char		*char_arr;
+	int			i;
+	long int	lng_n;
 
-	n_copy = n;
-	nbr_count = ft_nbr_counter(n_copy);
-	if (n_copy < 0)
-		n_copy *= -1;
-	str = malloc(sizeof(char) * (nbr_count) + 1);
-	if (!str)
+	lng_n = n;
+	i = ft_count_digits(lng_n);
+	char_arr = (char *)malloc(sizeof(char) * ft_count_digits(lng_n) + 1);
+	if (!char_arr)
 		return (NULL);
-	str[nbr_count--] = '\0';
-	while (nbr_count >= 0)
+	char_arr[i--] = '\0';
+	if (lng_n == 0)
+		char_arr[i--] = '0';
+	if (lng_n < 0)
 	{
-		str[nbr_count--] = (n_copy % 10) + '0';
-		n_copy /= 10;
+		char_arr[0] = '-';
+		lng_n = -lng_n;
 	}
-	if (n < 0)
-		str[0] = '-';
-	return (str);
+	while (lng_n > 0)
+	{
+		char_arr[i--] = (lng_n % 10) + '0';
+		lng_n = lng_n / 10;
+	}
+	return (char_arr);
 }
-/* #include <stdio.h>
 
-int	main(void)
-{
-	printf("%d\n", ft_nbr_counter(0));
-	printf("%s", ft_itoa(' '));
-	return (0);
-} */
+// #include <stdio.h>
+// int main(void)
+// {
+//     printf("%s\n", ft_itoa(0));
+//     // printf("%ld\n", ft_count_digits(0));
+
+// }

@@ -3,49 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 11:39:53 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:30:39 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:10:29 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 14:53:05 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned long int	i;
-	unsigned long int	j;
+	size_t	i;
+	size_t	j;
 
-	if (*needle == '\0')
-		return ((char *)haystack);
 	i = 0;
-	while (haystack[i] != '\0')
+	if ((little != NULL) && (little[0] == '\0'))
+		return ((char *)big);
+	while (big[i] != '\0')
 	{
-		if (i > len)
-			return (0);
 		j = 0;
-		while (needle[j] == haystack[j + i] && (j + i) < len)
+		while (little[j] == big[j + i] && (j + i) < len)
 		{
-			if (needle[j + 1] == '\0')
-				return ((char *)&haystack[i]);
+			if (little[j + 1] == '\0')
+				return ((char *)&big[i]);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
-
-/* #include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	char s1[] = "Hola me llamo pipo";
-	char s2[] = "";
-	int n = 9;
-
-	printf("%s\n", ft_strnstr(s1, s2, n));
-	printf("%s", strnstr(s1, s2, n));
-	return (0);
-} */
+// int main(void)
+// {
+//     char *str1 = "12345";
+//     char *str2 = "123";
+//     // printf("%d\n", ft_little_match(str, str));
+//     printf("%s\n", ft_strnstr(str1, str2, 1));
+//     return 0;
+// }

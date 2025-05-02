@@ -3,68 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 13:44:06 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/06/10 13:04:59 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:08:55 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 14:47:54 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* char	*ft_strjoin(char const *s1, char const *s2)
+static void	ft_cpy(char *dest, const char *src)
 {
-	size_t		size;
-	char		*aux;
+	int	i;
 
-	if (!s1 || !s2)
-		return (NULL);
-	size = ft_strlen(s1) + ft_strlen(s2);
-	aux = malloc(sizeof(char) * (size + 1));
-	if (aux == NULL)
-		return (0);
-	ft_memcpy(aux, s1, ft_strlen(s1) + 1);
-	aux[ft_strlen(s1) + 1] = '\0';
-	ft_strlcat(aux, s2, size + 1);
-	return (aux);
-} */
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t		size;
-	char		*aux;
-	int			i;
-	int			j;
+	char	*conc_str;
 
-	i = 0;
-	j = 0;
-	size = ft_strlen(s1) + ft_strlen(s2);
-	if (size == 0)
-		return (ft_strdup(""));
-	aux = malloc(sizeof(char) * (size + 1));
-	if (aux == NULL)
-		return (0);
-	while (s1 && s1[i] != '\0')
-	{
-		aux[i] = s1[i];
-		i++;
-	}
-	while (s2 && s2[j] != '\0')
-	{
-		aux[i + j] = s2[j];
-		j++;
-	}
-	aux[i + j] = '\0';
-	return (aux);
+	conc_str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!(conc_str))
+		return (NULL);
+	ft_cpy(conc_str, s1);
+	ft_cpy(&conc_str[ft_strlen(conc_str)], s2);
+	return (conc_str);
 }
-
-/* #include <stdio.h>
-
-int	main(void)
-{
-	char s1[] = "pipo";
-	char s2[] = " es un buen perro";
-	printf("%s", ft_strjoin(s1, s2));
-
-	return (0);
-} */
+// int main(void)
+// {
+// 	char *s1 = "hello ";
+// 	char *s2 = "world";
+// 	char p[100];
+// 	printf("%s\n", ft_strjoin(s1, s2));
+// 	ft_cpy(p, s1);
+// 	printf("%s\n", p);
+// 	return 0;
+// }

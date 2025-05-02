@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 12:36:45 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/16 12:51:43 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:10:18 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:24:21 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,33 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	i;
-	char			*aux;
+	int		i;
+	char	*result;
 
-	if (!s || !f)
-		return (0);
 	i = 0;
-	aux = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!aux)
+	result = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!result)
 		return (NULL);
 	while (s[i])
 	{
-		aux[i] = f(i, s[i]);
+		result[i] = f(i, s[i]);
 		i++;
 	}
-	aux[i] = '\0';
-	return (aux);
+	result[i] = '\0';
+	return (result);
 }
+// #include <ctype.h>
+// char uppercase(unsigned int i, char c)
+// {
+//     if (i % 2 == 0)
+//         return toupper(c);
+//     else
+//         return tolower(c);
+// }
+
+// int main(void)
+// {
+// 	char *res = ft_strmapi("Hello, World!", uppercase);
+// 	printf("%s\n", res);
+// 	return 0;
+// }

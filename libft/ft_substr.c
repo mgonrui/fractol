@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 12:30:50 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 18:43:46 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/06/09 17:18:20 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 14:10:53 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,37 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*aux;
+	char	*substr;
 	size_t	i;
+	size_t	size_to_malloc;
 
 	i = 0;
-	if (!s)
-		return (0);
-	if (start > ft_strlen(s))
+	if (start >= (size_t)ft_strlen(s))
 		return (ft_strdup(""));
-	if (start + len > ft_strlen(s))
-		len = ft_strlen(s) - start;
-	aux = malloc(sizeof(char) * len + 1);
-	if (aux == NULL)
-		return (0);
-	while (i < len)
+	if (start + len < (size_t)ft_strlen(s))
 	{
-		aux[i] = s[start + i];
+		size_to_malloc = len;
+	}
+	else
+	{
+		size_to_malloc = ft_strlen(&s[start]);
+	}
+	substr = malloc(sizeof(char) * size_to_malloc + 1);
+	if (substr == NULL)
+		return (NULL);
+	while (i < size_to_malloc)
+	{
+		substr[i] = s[start + i];
 		i++;
 	}
-	aux[i] = '\0';
-	return (aux);
+	substr[i] = '\0';
+	return (substr);
 }
+// #include <stdio.h>
 
-/* #include <stdio.h>
-
-int	main(void)
-{
-	char	str[] = "pipo es un buen perro";
-	int		start = 20;
-	int		len = 4;
-
-	printf("%s", ft_substr(str, start, len));
-	return (0);
-} */
+// int main(void)
+// {
+// 	const char *string = "123456789";
+// 	printf("%s\n", ft_substr(string,9, 5));
+// 	return 0;
+// }

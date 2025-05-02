@@ -3,44 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 12:54:17 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/25 17:35:10 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:08:45 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:23:39 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	unsigned int	i;
-	char			*aux;
+	int	i;
 
-	if (!s || !f)
-		return ;
 	i = 0;
-	aux = s;
 	while (s[i])
 	{
-		f(i, &aux[i]);
+		f(i, &s[i]);
 		i++;
 	}
 }
 
-/* void	ft_toupper2(unsigned int n, char *c)
-{
-	n=0;
-	c[0] = ft_toupper(c[0]);
-}
+// #include <ctype.h>
 
-#include <stdio.h>
+// void uppercase(unsigned int index, char *ch)
+// {
+//     *ch = toupper(*ch);
+// }
 
-int main(void)
-{
-	char s[] = "Pipo es un buen perro";
-
-	ft_striteri(s, ft_toupper2);
-	printf("%s", s);
-	return (0);
-} */
+// int main(void)
+// {
+// 	char str[] = "hello world";
+// 	ft_striteri(str, uppercase);
+// 	printf("%s\n", str);
+// 	return 0;
+// }

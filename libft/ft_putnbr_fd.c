@@ -3,42 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 15:37:11 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/16 15:58:36 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:07:44 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 13:31:37 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int nb, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (nb == -2147483648)
+	if (n == -2147483648)
 	{
-		ft_putnbr_fd(-214748364, fd);
-		ft_putchar_fd('8', fd);
+		ft_putstr_fd("-2147483648", fd);
+		return ;
 	}
-	else if (nb < 0)
+	else if (n < 0)
 	{
-		nb *= -1;
 		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(nb, fd);
+		n = -n;
+		ft_putnbr_fd(n, fd);
 	}
-	else if (nb > 9)
+	else if (n > 9)
 	{
-		ft_putnbr_fd(nb / 10, fd);
-		ft_putnbr_fd((nb % 10), fd);
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
 	}
 	else
 	{
-		ft_putchar_fd(nb + '0', fd);
+		ft_putchar_fd(n + '0', fd);
 	}
 }
-
-/* int	main(void)
-{
-	int	fd = open("pipo.txt", O_WRONLY);
-	ft_putnbr_fd(-2147483648, fd);
-	return (0);
-} */
+// int main(void)
+// {
+// 	ft_putnbr_fd(123123123, 1);
+// 	return 0;
+// }

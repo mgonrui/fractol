@@ -3,30 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 10:32:25 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:31:08 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:08:20 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 13:37:25 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *string)
 {
-	char	*aux;
+	char	*p_string;
 
-	aux = malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (aux == NULL)
+	p_string = malloc(sizeof(char) * ft_strlen(string) + 1);
+	if (p_string == NULL)
 		return (0);
-	aux = (char *)ft_memcpy(aux, s1, ft_strlen(s1) + 1);
-	return (aux);
+	ft_memcpy(p_string, string, ft_strlen(string) + 1);
+	return (p_string);
 }
-/* #include <stdio.h>
+// #include <stdio.h>
 
-int	main(void)
-{
-	char	s1[] = "lorem ipsum dolor sit amet";
-	printf("%s", ft_strdup(s1));
-	return (0);
-} */
+// int main(void)
+// {
+// 	const char *string = "hello world";
+// 	char *duplicate = ft_strdup(string);
+// 	printf("%s\n", duplicate);
+// 	return 0;
+// }

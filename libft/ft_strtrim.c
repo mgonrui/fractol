@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 16:51:47 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/19 13:23:21 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/06/09 18:32:11 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 14:52:07 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	isinset(char const *s, char c)
+static int	ft_is_match(char const *set, char c)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (c == '\0')
 		return (1);
-	while (s[i] != '\0')
+	while (set[i])
 	{
-		if (s[i] == c)
+		if (set[i] == c)
 			return (1);
 		i++;
 	}
@@ -30,54 +30,37 @@ static int	isinset(char const *s, char c)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
+	char	*result;
 	int		i;
-	int		j;
-	int		count;
-	int		limit;
-	char	*aux;
+	int		start_i;
+	int		end_i;
 
 	i = 0;
-	j = ft_strlen(s1);
-	count = 0;
-	while (isinset(set, s1[i]) && i < j)
-		i++;
-	while (isinset(set, s1[j]) && j > 0)
-		j--;
-	limit = (j - i) + 1;
-	if (s1[0] == '\0' || j == 0)
-		aux = malloc(sizeof(char) * (j + 1));
-	else
-		aux = malloc(sizeof(char) * (limit + 1));
-	if (aux == NULL)
-		return (0);
-	while ((count < limit) && s1[0] != '\0')
-		aux[count++] = s1[i++];
-	aux[count] = '\0';
-	return (aux);
+	start_i = 0;
+	end_i = ft_strlen(s1) - 1;
+	if (!(s1))
+		return (NULL);
+	while (s1[start_i] && ft_is_match(set, s1[start_i]))
+		start_i++;
+	while (s1[end_i] && ft_is_match(set, s1[end_i]))
+		end_i--;
+	if (start_i == ft_strlen(s1))
+		return (result = ft_strdup(""));
+	result = malloc(sizeof(char) * (end_i - start_i) + 2);
+	if (result == NULL)
+		return (NULL);
+	while (start_i <= end_i)
+		result[i++] = s1[start_i++];
+	result[i] = '\0';
+	return (result);
 }
-/*Al malloc hay que sumarle dos porque el strlen no cuenta el nulo
-y se salta el nulo en isinset
-
-En el isinset, la condicion de j >= 0 es por si el set va a borrar el string
-entero. Sin esto, entra en negativo y el malloc no funciona
-
-De normal el malloc se hace con limit para calcular lo que se ha borrado por 
-delante y por detrás, sumando 1 para dejar espacio al nulo, pero si se ha
-borrado todo, la j + 1 deja espacio para el null
-
-while ((count < limit) && s1[0] != '\0')
-el s1[0] != '\0' es porque si el string esta vacio, el limit = 1. Y no
-queremos que copie nada más que el nulo*/
-
-/* La Funcion en si lo que hace es elminar lo que tu le digas en set, tanto
-por delante como por detrás hasta encontrar otra cosa */
-
-/*#include <stdio.h>
-
-int	main(void)
-{
-	char s1[] = " Hola pipo        ";
-	char s2[] = "podasd"; 
- 	printf("%s", ft_strtrim(s1, s2));
-	return (0);
-} */
+// int	main(void)
+// {
+// 	char *s3 = "  \t \t \n   \n\n\n\t";
+//     // char *s4 = "";
+//     printf("%s\n", ft_strtrim(s3, " \n\t"));
+// 	// char s1[] = "honlapipo";
+// 	// char s2[] = "hola"; 
+//  	// printf("%s", ft_strtrim(s1, s2));
+// 	return (0);
+// } 

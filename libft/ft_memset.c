@@ -3,36 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 14:53:19 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:31:16 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/04/10 14:53:20 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:37:35 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void	*ptr, int x, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t				i;
-	unsigned char		*tmp;
+	size_t			i;
+	unsigned char	*p_s;
 
-	tmp = (unsigned char *)ptr;
 	i = 0;
+	p_s = (unsigned char *)s;
 	while (i < n)
 	{
-		tmp[i] = (unsigned char)x;
+		p_s[i] = (unsigned char)c;
 		i++;
 	}
-	return (ptr);
+	return (s);
 }
+// #include <stdio.h>
 
-/* #include <stdio.h>
-int	main(void)
-{
-	char str[50] = "pipo es un buen perro";
-	printf("%s\n", str);
-	ft_memset(str, '.', 8);
-	printf("%s", str);
-	return (0);
-} */
+// int main(void)
+// {
+// 	char string[] = "hello world";
+// 	printf("%s\n", string);
+// 	ft_memset(string, 'x', 3);
+// 	printf("%s\n", string);
+// }

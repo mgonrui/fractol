@@ -3,42 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 09:59:43 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:31:20 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:06:04 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 14:00:00 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	size_t	i;
-	char	*tmp;
-	char	*aux;
+	char		*p_dst;
+	const char	*p_src;
+	size_t		i;
 
-	tmp = (char *)dst;
-	aux = (char *)src;
 	i = 0;
+	p_dst = (char *)dst;
+	p_src = (const char *)src;
 	if (!dst && !src)
-		return (0);
+		return (NULL);
 	while (i < n)
 	{
-		tmp[i] = aux[i];
+		p_dst[i] = p_src[i];
 		i++;
 	}
 	return (dst);
 }
 
-/* #include<stdio.h>  
+// #include <stdio.h>
+// #include <string.h>
 
-int	main(void)
-{
-	char dst[] = "";
-	char src[] = "";
+// int main() {
+//     char str[50] = "1234567890";
 
-	ft_memcpy(dst, src, 5);
-	printf("%s", dst);
-	return (0);
-} */
+//     // Copy the string to the middle of itself
+//     // memcpy(str + 7, str, 13);
+//     // memmove(str + 7, str, 13);
+//     ft_memcpy(str + 7, str, 2);
+//     printf("Modified string: %s\n", str);
+//     return 0;
+// }

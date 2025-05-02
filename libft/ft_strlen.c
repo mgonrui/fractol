@@ -3,32 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 14:41:43 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/06/10 13:03:13 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/09/10 19:10:00 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:24:11 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
-		return (0);
 	while (str[i])
-	{
 		i++;
-	}
 	return (i);
 }
-/* #include <stdio.h>
-int	main(void)
-{
-	char str[] = "hola";
-	printf("%zu", ft_strlen(str));
-	return (0);
-} */
+// #include <stdio.h>
+// int main(void)
+// {
+// 	printf("%d\n", ft_strlen("12345"));	
+// 	return 0;
+// }

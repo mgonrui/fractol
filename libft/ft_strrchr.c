@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarenas- <aarenas-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mariogo2 <mariogo2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 17:31:33 by aarenas-          #+#    #+#             */
-/*   Updated: 2024/04/15 12:30:37 by aarenas-         ###   ########.fr       */
+/*   Created: 2024/05/14 15:18:24 by mariogo2          #+#    #+#             */
+/*   Updated: 2024/09/12 12:24:49 by mariogo2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char	aux;
+	char			*s_converted;
 	int				i;
-	char			*tmp;
+	unsigned char	unsigned_c;
 
-	aux = c;
+	unsigned_c = c;
 	i = ft_strlen(s);
-	tmp = (char *)s;
+	s_converted = (char *)s;
 	while (i >= 0)
 	{
-		if (tmp[i] == aux)
-		{
-			return (&tmp[i]);
-		}
+		if (unsigned_c == s_converted[i])
+			return (&s_converted[i]);
 		i--;
 	}
 	return (NULL);
 }
+// #include <stdio.h>
+// #include <string.h>
+// int main (void) {
+// //    int len;
+//    const char str[] = "";
+//    const char ch = '.';
+//    char *ret;
 
-/* #include <stdio.h>
+// //    ret = strrchr(str, ch);
+//    ret = ft_strrchr(str, ch);
 
-int	main(void)
-{
-	char	str[] = "jipo es un uen perro";
-	int		c = '\0';
+//    printf("String after |%c| is - |%s|\n", ch, ret);
 
-	printf("%s", ft_strrchr(str, c));
-	if (ft_strrchr(str, c) == NULL)
-		printf("No esta");
-	//printf("%zu", ft_strlen(str));
-} */
+//    return(0);
+// }
